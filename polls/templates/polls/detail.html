@@ -5,8 +5,17 @@
     <title>Question details</title>
 </head>
 <body>
-    <h1>{{ question }}</h1>
-    <p>Date published: {{ question.publication_date }}</p>
+    <h1>{{ question.question_text }}</h1>
+    <h3>Date published: {{ question.publication_date }}</h3>
+{% if question.choice_set.all %}
+    <ul>
+    {% for choice in question.choice_set.all %}
+        <li>{{ choice.choice_text }} </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No choices are available for this question yet.</p>
+{% endif %}
     <a href="/polls/">Go back to question list</a>
 </body>
 </html>
