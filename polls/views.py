@@ -7,18 +7,17 @@ from .models import Choice, Question
 
 def index(request):
     latest_question_list = Question.objects.order_by('-publication_date')[:5]
-    context = {'latest_question_list': latest_question_list}
-    return render(request, 'polls/index.html', context)
+    return render(request, 'polls/index.html', context={'latest_question_list': latest_question_list})
 
 
 def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
-    context = {'question': question}
-    return render(request, 'polls/detail.html', context)
+    return render(request, 'polls/detail.html', context={'question': question})
 
 
 def results(request, question_id):
-    return HttpResponse(b"You're looking at the results of question '%d'" % question_id)
+    question = get_object_or_404(Question, pk=question_id)
+    return render(request, 'polls/results.html', context={'question': question})
 
 
 def vote(request, question_id):

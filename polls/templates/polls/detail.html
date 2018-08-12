@@ -6,7 +6,6 @@
 </head>
 <body>
     <h1>{{ question.question_text }}</h1>
-    <h3>Date published: {{ question.publication_date }}</h3>
 {% if error_message %}<p style="color:Tomato"><strong>{{ error_message }}</strong></p>{% endif %}
 {% if question.choice_set.all %}
     <form action="{% url 'polls:vote' question.id %}" method="post">
