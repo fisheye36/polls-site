@@ -16,6 +16,6 @@
 {% else %}
     <p>No choices are available for this question yet.</p>
 {% endif %}
-    <a href="/polls/">Go back to question list</a>
+    <a href="{% url 'polls:index' %}">Go back to question list</a>
 </body>
 </html>
