@@ -1,3 +1,22 @@
+body {
+    background: azure url("images/background.jpg") no-repeat;
+    background-size: cover;
+}
+
+li {
+    margin: 10px;
+}
+
+li a {
+    border: 2px solid forestgreen;
+    border-radius: 8px;
+    font-size: xx-large;
+}
+
+li a:hover {
+    border-color: limegreen;
+}
+
 a {
     color: forestgreen;
     text-decoration: none;
@@ -6,3 +25,4 @@ a {
 a:hover {
     color: limegreen;
 }
+
