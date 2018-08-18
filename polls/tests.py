@@ -84,3 +84,17 @@ class DetailViewTests(TestCase):
         future_question = _create_question('Future question', days=1)
         response = self.client.get(reverse('polls:detail', args=(future_question.pk,)))
         self.assertEqual(response.status_code, 404)
+
+
+class ResultsViewTests(TestCase):
+
+    def test_past_question(self):
+        past_question = _create_question('Past question', days=-1)
+        response = self.client.get(reverse('polls:results', args=(past_question.pk,)))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, past_question.question_text)
+
+    def test_future_question(self):
+        future_question = _create_question('Future question', days=1)
+        response = self.client.get(reverse('polls:results', args=(future_question.pk,)))
+        self.assertEqual(response.status_code, 404)
