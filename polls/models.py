@@ -15,6 +15,10 @@ class Question(models.Model):
         now = timezone.now()
         return now - recent_period <= self.publication_date <= now
 
+    was_published_recently.admin_order_field = 'publication_date'
+    was_published_recently.boolean = True
+    was_published_recently.short_description = 'Published recently?'
+
 
 class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
